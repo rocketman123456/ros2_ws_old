@@ -1,1 +1,1 @@
-. install/setup.bash
+. install/setup.zsh
