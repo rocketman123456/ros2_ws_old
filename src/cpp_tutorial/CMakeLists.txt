@@ -10,6 +10,14 @@ find_package(ament_cmake REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+
+add_executable(simple_publisher src/simple_publisher.cpp)
+ament_target_dependencies(simple_publisher rclcpp std_msgs)
+
+add_executable(simple_suscriber src/simple_suscriber.cpp)
+ament_target_dependencies(simple_suscriber rclcpp std_msgs)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -22,5 +30,15 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+install(TARGETS
+  simple_publisher
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(TARGETS
+  simple_suscriber
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 ament_package()
