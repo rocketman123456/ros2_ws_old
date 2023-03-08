@@ -7,3 +7,5 @@ srv_gen/
 
 # Catkin custom files
 CATKIN_IGNORE
+
+*.pyc

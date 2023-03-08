@@ -12,12 +12,19 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
+find_package(example_interfaces REQUIRED)
 
 add_executable(simple_publisher src/simple_publisher.cpp)
 ament_target_dependencies(simple_publisher rclcpp std_msgs)
 
 add_executable(simple_suscriber src/simple_suscriber.cpp)
 ament_target_dependencies(simple_suscriber rclcpp std_msgs)
+
+add_executable(simple_service src/simple_service.cpp)
+ament_target_dependencies(simple_service rclcpp example_interfaces)
+
+add_executable(simple_client src/simple_client.cpp)
+ament_target_dependencies(simple_client rclcpp example_interfaces)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -38,6 +45,16 @@ install(TARGETS
 
 install(TARGETS
   simple_suscriber
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(TARGETS
+  simple_service
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+install(TARGETS
+  simple_client
   DESTINATION lib/${PROJECT_NAME}
 )
 

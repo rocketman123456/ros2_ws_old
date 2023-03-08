@@ -1,4 +1,5 @@
 #include <memory>
+#include <string>
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -14,6 +15,8 @@ public:
         subscription_ = this->create_subscription<std_msgs::msg::String>(
             "topic", 10, std::bind(&MinimalSubscriber::topic_callback, this, _1)
         );
+
+        RCLCPP_INFO(this->get_logger(), "MinimalSubscriber 节点已经启动.");
     }
 
 private:
