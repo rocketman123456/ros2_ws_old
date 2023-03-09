@@ -20,7 +20,9 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "simple_node = py_tutorial.simple_node:main"
+            "simple_node = py_tutorial.simple_node:main",
+            "simple_client = py_tutorial.simple_client:main",
+            "simple_server = py_tutorial.simple_server:main",
         ],
     },
 )

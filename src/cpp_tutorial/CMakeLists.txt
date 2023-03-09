@@ -13,6 +13,16 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(example_interfaces REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(geometry_msgs REQUIRED)
+
+# 添加下面的内容
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/RobotPose.msg"
+  "msg/RobotStatus.msg"
+  "srv/MoveRobot.srv"
+  DEPENDENCIES geometry_msgs
+)
 
 add_executable(simple_publisher src/simple_publisher.cpp)
 ament_target_dependencies(simple_publisher rclcpp std_msgs)
