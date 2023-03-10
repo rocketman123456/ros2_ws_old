@@ -9,3 +9,6 @@ srv_gen/
 CATKIN_IGNORE
 
 *.pyc
+
+.DS_Store
+*.DS_Store
